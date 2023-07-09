@@ -1,0 +1,82 @@
+{
+  "project": "gwtools",
+  "inputNetworks":
+  {
+    "inputNetworkBaudrate" : 500000,
+    "inputNetworksNames": {
+      "CAN00": "Info-CAN",
+      "CAN01": "PT-CAN",
+      "CAN02": "Chassis-CAN",
+      "CAN04": "Body-CAN",
+      "CAN05": "Diag-CAN",
+      "LIN00": "XGW-LIN0"
+    },
+    "inputNetworkFiles": {
+      "CAN00": "XGW_Info_CAN.xls",
+      "CAN01": "XGW_PT_CAN.xls",
+      "CAN02": "XGW_Chassis_CAN.xls",
+      "CAN04": "XGW_Body_CAN.xls",
+      "CAN05": "XGW_Diag_CAN.xls",
+      "LIN00": "XGW_LIN0.xls"
+	},
+    "inputNetworkFileFormatCAN": {
+      "FirstRow": 2,
+      "MsgName":0,
+      "MsgType":1,
+      "MsgID":2,
+      "MsgSendType":3,
+      "MsgCycleTime":4,
+      "MsgLengthInByte":5,
+      "SignalName":6,
+      "SignalDescription":7,
+      "ByteOrder":8,
+      "StartByte":9,
+      "StartBit":10,
+      "SignalSendType":11,
+      "SignalLengthInBit":12,
+      "DataType":13,
+      "Resolution":14,
+      "Offset":15,
+      "SignalMin.ValuePhys":16,
+      "SignalMax.ValuePhys":17,
+      "TimeoutValue":18,
+      "TimeoutTime":19,
+      "InitialValue":20,
+      "InvalidValue":21,
+      "InactiveValue":22,
+      "Unit":23,
+      "SignalValueDescription":24,
+      "MsgCycleTimeFast":25,
+      "MsgNoOfReption":26,
+      "MsgDelayTime":27,
+      "StartOfECUListCol": 28
+    },
+    "inputNetWorkSheets": [0]
+  },
+  "routingTable": {
+    "inputRoutingTableFile": "XGW-Routing_Matrix.xls",
+    "inputRoutingTableFormat": {
+      "FirstRow": 2,
+      "DestSigName": 1,
+      "DestMsgName": 2,
+      "DestNetwork": 3,
+      "DestMsgCanID": 4,
+      "DestSigBitSize": 5,
+      "DestSigStartBit": 6,
+      "DestSigPeriod": 7,
+      "SrcSigName": 8,
+      "SrcMsgName": 9,
+      "SrcNetwork": 10,
+      "SrcMsgCanID": 11,
+      "SrcSigBitSize": 12,
+      "SrcSigStartBit": 13,
+      "SrcSigPeriod": 14,
+      "TimeOutValue": 15,
+      "InitValue": 16,
+      "RoutingType": 17
+    },
+    "inputRoutingTableWorkingSheets": [0,1,2,3,4,5]
+    },
+  "inputFolder": "input",
+  "outputFolder": "output"
+}
