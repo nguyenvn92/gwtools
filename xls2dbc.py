@@ -157,7 +157,7 @@ def xls2dbc(config):
                 form = config['inputNetworks']['inputNetworkFileFormatCAN']
                 input_file_path = config['inputFolder'] + '\\' + inputFile
                 output_file_path = config['outputFolder'] + '\\' + os.path.splitext(inputFile)[0] + '.dbc'
-                net_long_name = config['inputNetworks']['inputNetworksNames'][netName]
+                net_long_name = config['NetworksNames'][netName]
                 net_baudrate = config['inputNetworks']['inputNetworkBaudrate']
                 sheets = config['inputNetworks']['inputNetWorkSheets']
 
@@ -238,8 +238,7 @@ def xls2dbc(config):
                     database.messages.append(msg)
                     database.refresh()
 
-                with open(output_file_path, 'w') as create_empty_file:
-                    cantools.database.dump_file(database, output_file_path)
+                cantools.database.dump_file(database, output_file_path)
         # elif 'LIN' in netName:
         # TODO: to generate ldf files
 

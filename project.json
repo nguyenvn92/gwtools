@@ -1,16 +1,17 @@
 {
   "project": "gwtools",
+  "EcuInstance": "XGW",
+  "NetworksNames": {
+    "CAN00": "Info-CAN",
+    "CAN01": "PT-CAN",
+    "CAN02": "Chassis-CAN",
+    "CAN04": "Body-CAN",
+    "CAN05": "Diag-CAN",
+    "LIN00": "XGW-LIN0"
+  },
   "inputNetworks":
   {
     "inputNetworkBaudrate" : 500000,
-    "inputNetworksNames": {
-      "CAN00": "Info-CAN",
-      "CAN01": "PT-CAN",
-      "CAN02": "Chassis-CAN",
-      "CAN04": "Body-CAN",
-      "CAN05": "Diag-CAN",
-      "LIN00": "XGW-LIN0"
-    },
     "inputNetworkFiles": {
       "CAN00": "XGW_Info_CAN.xls",
       "CAN01": "XGW_PT_CAN.xls",
@@ -57,26 +58,40 @@
     "inputRoutingTableFile": "XGW-Routing_Matrix.xls",
     "inputRoutingTableFormat": {
       "FirstRow": 2,
-      "DestSigName": 1,
-      "DestMsgName": 2,
-      "DestNetwork": 3,
-      "DestMsgCanID": 4,
-      "DestSigBitSize": 5,
-      "DestSigStartBit": 6,
-      "DestSigPeriod": 7,
-      "SrcSigName": 8,
-      "SrcMsgName": 9,
-      "SrcNetwork": 10,
-      "SrcMsgCanID": 11,
-      "SrcSigBitSize": 12,
-      "SrcSigStartBit": 13,
-      "SrcSigPeriod": 14,
-      "TimeOutValue": 15,
-      "InitValue": 16,
-      "RoutingType": 17
+      "DestSigName": 0,
+      "DestMsgName": 1,
+      "DestNetwork": 2,
+      "DestMsgCanID": 3,
+      "DestSigBitSize": 4,
+      "DestSigStartBit": 5,
+      "DestSigPeriod": 6,
+      "SrcSigName": 7,
+      "SrcMsgName": 8,
+      "SrcNetwork": 9,
+      "SrcMsgCanID": 10,
+      "SrcSigBitSize": 11,
+      "SrcSigStartBit": 12,
+      "SrcSigPeriod": 13,
+      "TimeOutValue": 14,
+      "InitValue": 15,
+      "RoutingType": 16
     },
-    "inputRoutingTableWorkingSheets": [0,1,2,3,4,5]
-    },
+    "inputRoutingTableWorkingSheets": [0,1,2,3,4,5],
+    "inputDiagPhys":
+      {
+        "CAN00": ["XGW_DiagReq", "XGW_DiagResp"],
+        "CAN05": ["XGW_DiagReq", "XGW_DiagResp"]
+      },
+    "inputDiagFunc":
+      {
+        "CAN00": ["GW_DiagFunctionalAddressing", "MHU_rFuncDiagReq_0x7EE"],
+        "CAN01": ["GW_DiagFunctionalAddressing"],
+        "CAN02": ["GW_DiagFunctionalAddressing"],
+        "CAN03": ["GW_DiagFunctionalAddressing"],
+        "CAN04": ["GW_DiagFunctionalAddressing"],
+        "CAN05": ["GW_DiagFunctionalAddressing"]
+      }
+  },
   "inputFolder": "input",
   "outputFolder": "output"
 }
