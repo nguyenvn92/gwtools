@@ -3,6 +3,22 @@ import xlrd
 import json
 import xml.etree.ElementTree as ET
 
+# in-place prettyprint formatter,
+# from stackoverflow.com/questions/749796/pretty-printing-xml-in-python
+def indent(elem, level=0):
+    i = "\n" + level*" "
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + " "
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+        for elem in elem:
+            indent(elem, level+1)
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = i
 
 # create the cantp connections
 def cantp_creation(root, cantp_conf_phys, cantp_conf_func):
@@ -158,7 +174,7 @@ def xls2vsde(config):
         gwrouting = gateway_routing_creation(root, form, config["EcuInstance"], config['NetworksNames'],
                                              cantp_conf_func, input_file_path,
                                              config["routingTable"]["inputRoutingTableWorkingSheets"])
-
+        indent(root)
         tree = ET.ElementTree(root)
         tree.write(output_file_path, encoding="utf-8", xml_declaration=True)
 
