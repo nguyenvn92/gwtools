@@ -5,20 +5,22 @@ import xml.etree.ElementTree as ET
 
 # in-place prettyprint formatter,
 # from stackoverflow.com/questions/749796/pretty-printing-xml-in-python
-def indent(elem, level=0):
-    i = "\n" + level*" "
-    if len(elem):
+def indent(elem, level=0, last_elem=False):
+    i = "\n" + level*4*" "
+    j = "\n" + (level-1)*4*" "
+    if len(elem) > 0:
         if not elem.text or not elem.text.strip():
-            elem.text = i + " "
+            elem.text = i + 4*" "
         if not elem.tail or not elem.tail.strip():
-            elem.tail = i
-        for elem in elem:
-            indent(elem, level+1)
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = i
+            elem.tail = j if last_elem else i
+        for index in range(len(elem)-1):
+            subelem = elem[index]
+            indent(subelem, level+1)
+        indent(elem[-1], level+1, True)
     else:
         if level and (not elem.tail or not elem.tail.strip()):
-            elem.tail = i
+            elem.tail = j if last_elem else i
+    return elem
 
 # create the cantp connections
 def cantp_creation(root, cantp_conf_phys, cantp_conf_func):
