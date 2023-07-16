@@ -136,13 +136,13 @@ def gateway_routing_creation(root, form, ecu, netnames, cantp_conf_func, input_f
         src_network = ET.SubElement(sigrouting, 'SOURCE-LIN-CLUSTER-REF') if 'LIN' in each[1] else ET.SubElement(
             sigrouting, 'SOURCE-CAN-CLUSTER-REF')
         dest_network = ET.SubElement(sigrouting, 'TARGET-LIN-CLUSTER-REF') if 'LIN' in each[2] else ET.SubElement(
-            sigrouting, 'SOURCE-CAN-CLUSTER-REF')
+            sigrouting, 'TARGET-CAN-CLUSTER-REF')
         signal_mappings = ET.SubElement(sigrouting, 'SIGNAL-MAPPINGS')
         signal_mapping = ET.SubElement(signal_mappings, 'SIGNAL-MAPPING')
         process = ET.SubElement(signal_mapping,'PROCESSING')
         src_msg = ET.SubElement(signal_mapping, 'SOURCE-I-PDU-REF')
         src_sig = ET.SubElement(signal_mapping, 'SOURCE-SIGNAL-REF')
-        dest_msg = ET.SubElement(signal_mapping, 'TARGET-SIGNAL-REF')
+        dest_msg = ET.SubElement(signal_mapping, 'TARGET-I-PDU-REF')
         dest_sig = ET.SubElement(signal_mapping, 'TARGET-SIGNAL-REF')
         ecu_ins.text = each[0]
         src_network.text = each[1]
